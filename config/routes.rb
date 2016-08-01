@@ -18,8 +18,11 @@ Rails.application.routes.draw do
 
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users#, only: [ :new ]
+  get '/reviews', to: 'reviews#create'
 
+  resources :users#, only: [ :new ]
+  resources :products
+  resources :reviews,          only: [:create, :destroy]
   # get 'static_pages/home'
   # get 'static_pages/about'
 

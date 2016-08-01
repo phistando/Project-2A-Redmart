@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @reviews = @user.reviews.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -53,7 +55,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(permitted_user_params)
         flash[:success] = 'User was successfully updated.'
         format.html { redirect_to @user }
         format.json { render :show, status: :ok, location: @user }
@@ -85,20 +87,23 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def require_login
-      #check if the user is logged in or not
-      unless logged_in?
-        flash[:danger] = "NO WAY JOSE!"
-        redirect_to root_url # halts request cycle
-      end
-    end
+    # def require_login
+    #   #check if the user is logged in or not
+    #   unless logged_in?
+    #     flash[:danger] = "Please log in to access"
+    #     redirect_to root_url # halts request cycle
+    #   end
+    # end
+
+
 
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
 
+
       unless current_user?(@user)
-        flash[:warning] = "YOU ARE NOT JOSE"
+        flash[:warning] = "Incorrect user verification. Please try again"
         redirect_to root_url
       end
     end
@@ -109,12 +114,6 @@ class UsersController < ApplicationController
         redirect_to(root_url)
       end
     end
-
-
-
-
-
-
 
 
 end

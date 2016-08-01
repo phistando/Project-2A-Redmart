@@ -20,4 +20,8 @@ class User < ApplicationRecord
 # FOR HASHING PASSWORD
 has_secure_password
 
+def feed
+    Review.where("user_id = ?", id)
+  end
+
 end
