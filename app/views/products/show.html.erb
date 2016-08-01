@@ -1,0 +1,19 @@
+<% provide(:title, @product.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="product_info">
+      <h1>
+        <%= @product.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @product.reviews.any? %>
+      <h3>Reviews (<%= @product.reviews.count %>)</h3>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <%= will_paginate @reviews %>
+    <% end %>
+  </div>
+</div>
