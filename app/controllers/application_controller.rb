@@ -2,15 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-private
+  private
 
-  def require_login
-    #check if the user is logged in or not
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in to access"
-      redirect_to root_url # halts request cycle
+    # Confirms a logged-in user.
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
     end
-  end
-
 end

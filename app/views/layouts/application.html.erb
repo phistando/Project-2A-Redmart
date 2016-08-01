@@ -1,74 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsProject</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
-    <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>">
-      <%= message %>
-    </div>
-  <% end %>
-
-      <h1><%= heading_detail( yield(:heading) ) %></h1>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to "Rail Project", root_path, class: 'navbar-brand' %>
-          <!-- <a class="navbar-brand" href="#">Twitter</a> -->
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to "Home", root_path %>
-            </li>
-            <li>
-              <%= link_to "About", about_path %>
-            </li>
-            <li>
-              <%= link_to "Users", users_path %>
-            </li>
-            <% if logged_in? %> <!-- Already logged in_-->
-            <li>
-              <%= link_to "My page", current_user %>
-          </li>
-
-            <li>
-            <%= link_to "Logout", logout_path, method: :delete %>
-          </li>
-          <% else %>
-          <li>
-            <%= link_to "Sign Up", signup_path %>
-          </li>
-          <li>
-            <%= link_to "Log In", login_path %>
-          </li>
-          <% end %>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-
-
+    <%= render 'layouts/header' %>
     <div class="container">
-            <div class="jumbotron">
-              <%= yield %>
-            </div>
-          </div>
-
-
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <!-- <%= debug(params) if Rails.env.development? %> -->
+    </div>
   </body>
 </html>

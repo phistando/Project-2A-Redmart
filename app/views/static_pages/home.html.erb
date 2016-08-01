@@ -13,15 +13,21 @@
       <%= render 'shared/feed' %>
     </div>
   </div>
-
-
-
 <% else %>
-<% provide(:heading, "Home") %>
-<div>
-<h1> Home Page </h1>
-<!-- <%= link_to "Sign up now!", 'users/new', class: "btn btn-lg btn-primary" %> -->
+
+<div class="center jumbotron">
+  <h1>Welcome to the Redmart Review</h1>
+
+  <!-- <h2>
+    This is the home page for
+    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+    Redmart review.
+  </h2> -->
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
+<!-- <%= link_to image_tag("rails.png", alt: "Rails logo"),
+            'http://rubyonrails.org/' %> -->
 
 <% end %>

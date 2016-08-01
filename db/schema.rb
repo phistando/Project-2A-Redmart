@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729040243) do
+ActiveRecord::Schema.define(version: 20160801020147) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20160729040243) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id", "created_at"], name: "index_reviews_on_product_id_and_created_at"
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id", "created_at"], name: "index_reviews_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_reviews_on_user_id"
@@ -33,9 +32,11 @@ ActiveRecord::Schema.define(version: 20160729040243) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "admin",           default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

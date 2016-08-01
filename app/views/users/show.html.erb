@@ -1,29 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<!-- <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p> -->
-
-<p>
-  <strong>ID Number:</strong>
-  <%= @user.id %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
-<div class="col-md-8">
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
     <% if @user.reviews.any? %>
       <h3>Reviews (<%= @user.reviews.count %>)</h3>
       <ol class="reviews">
@@ -32,6 +17,4 @@
       <%= will_paginate @reviews %>
     <% end %>
   </div>
-
-
-  
+</div>

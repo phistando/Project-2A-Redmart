@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :current_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
   def create
@@ -15,10 +15,9 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    flash[:success] = "Review deleted"
-    redirect_to request.referrer || root_url
+   flash[:success] = "Review deleted"
+   redirect_to request.referrer || root_url
   end
-
 
   private
 
