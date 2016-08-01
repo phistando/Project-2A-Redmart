@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+User.create!(name:  "Administrator",
+             email: "admin@redmart.com",
+             password:              "admin",
+             password_confirmation: "admin",
              admin: true)
 
 29.times do |n|
