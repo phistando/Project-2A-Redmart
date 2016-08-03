@@ -1,5 +1,9 @@
-<% provide(:title, 'All products') %>
-<h1>All products</h1>
+<% provide(:title, 'Products') %>
+<h1>Products</h1>
+
+<% if current_user.admin? %>
+<%= link_to "Add product", new_product_path %>
+<% end %>
 
 <%= will_paginate %>
 <ul class="products">
