@@ -6,6 +6,9 @@
         <%= @product.name %>
       </h1>
     </section>
+    <div class = "product_img">
+    <%= image_tag @product.picture.url if @product.picture? %>
+  </div>
   </aside>
   <div class="col-md-8">
     <% if @product.reviews.any? %>
@@ -15,5 +18,6 @@
       </ol>
       <%= will_paginate @reviews %>
     <% end %>
+    <%= link_to "add review", new_review_path(productId: @product.id)  %>
   </div>
 </div>

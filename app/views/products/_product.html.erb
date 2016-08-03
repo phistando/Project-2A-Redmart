@@ -1,15 +1,26 @@
 
 <li>
+
   <%= link_to product.name, product %>
 
-  <% if current_user.admin? && !current_user?(product) %>
-    | <%= link_to "delete", product, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-    | <%= link_to "edit", edit_product_path(product) %>
-    | <%= link_to "review", new_review_path(productId: product.id)  %>
+  <div class = "product_img">
+  <%= image_tag product.picture.url if product.picture? %>
+</div>
 
-    <% else %>
+  <% if current_user.admin? && !current_user?(product) %>
+
+     <%= link_to "delete", product, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+
+    | <%= link_to "edit", edit_product_path(product) %>
+
     | <%= link_to "add review", new_review_path(productId: product.id)  %>
 
-  <% end %>
+    <% else %>
+
+     <%= link_to "add review", new_review_path(productId: product.id)  %>
+
+    <% end %>
 </li>
+
+<br>

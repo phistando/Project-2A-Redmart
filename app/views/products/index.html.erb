@@ -1,13 +1,13 @@
 <% provide(:title, 'Products') %>
 <h1>Products</h1>
 
-<% if current_user.admin? %>
-<%= link_to "Add product", new_product_path %>
-<% end %>
-
 <%= will_paginate %>
 <ul class="products">
   <%= render @products %>
 </ul>
 
 <%= will_paginate %>
+
+<% if current_user.admin? %>
+<%= link_to "Add product", new_product_path %>
+<% end %>

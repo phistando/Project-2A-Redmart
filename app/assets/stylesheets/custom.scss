@@ -13,8 +13,31 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+p {
+    text-align: center;
+}
+
+a {
+    color: #0d508a;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  margin: 30px 0 0 0;
+}
+
+.btn-primary {
+    color: #441e1e;
+  }
+
+.jumbotron {
+  background-color: #d4baba;
+}
+
 body {
   padding-top: 60px;
+  background-color: #dedede;
 }
 
 section {
@@ -66,7 +89,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #dcc9c9;;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -131,6 +154,7 @@ aside {
       margin-bottom: 3px;
       line-height: 1;
     }
+
     h1 {
       font-size: 1.4em;
       text-align: left;
@@ -191,7 +215,7 @@ input {
   }
 }
 
-/* microposts */
+/* reviews */
 
 .reviews {
   list-style: none;
@@ -209,6 +233,8 @@ input {
     margin-left: 60px;
     img {
       display: block;
+      // width: 40px;
+      // height:40px;
       padding: 5px 0;
     }
   }
@@ -233,7 +259,18 @@ aside {
 
 span.picture {
   margin-top: 10px;
+
+
   input {
     border: 0;
   }
+}
+
+.product_img{
+  img{
+    width: 300px;
+    height: 300px;
+  }
+
+
 }
