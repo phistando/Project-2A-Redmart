@@ -60,12 +60,18 @@ class UsersController < ApplicationController
         # Confirms the correct user.
         def correct_user
           @user = User.find(params[:id])
-          redirect_to(root_url) unless current_user?(@user)
+          if !current_user?(@user)
+          flash[:danger] = "Access is denied"
+          redirect_to(users_url)
         end
+      end
 
         # Confirms an admin user.
             def admin_user
-              redirect_to(root_url) unless current_user.admin?
+              if !current_user.admin?
+              redirect_to(root_url)
+              flash[:danger] = "Access is denied"
             end
+          end
 
     end
