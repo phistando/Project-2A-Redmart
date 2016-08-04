@@ -12,8 +12,8 @@ module SessionsHelper
 
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
-    !current_user.nil?
-  end
+   !current_user.nil?
+end
 
   # Logs out the current user.
   def log_out
