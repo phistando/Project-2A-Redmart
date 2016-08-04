@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :create, :new]
-  # before_action :correct_user,   only: [:index, :edit, :update, :destroy]
-  # before_action :admin_user,     only: :destroy
+  before_action :logged_in_user, only: :index
+  before_action :admin_user,     only: [:destroy, :edit, :update, :new, :create]
 
 
 
@@ -56,5 +55,15 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :picture)
     end
+
+
+    # Confirms an admin user.
+    def admin_user
+      if !current_user.admin?
+        flash[:danger] = "Access is denied"
+        redirect_to(products_url)
+    end
+  end
+
 
 end

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_or_admin_user,   only: :destroy
-  # before_action :admin_user,     only: :destroy
+
 
 
   def new
