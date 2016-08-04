@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-   get    '/product',  to: 'products#show'
+
 
   # get     '/product', to: 'products#index'
   # get     '/register',  to: 'products#new'

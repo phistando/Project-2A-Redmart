@@ -12,10 +12,12 @@ class ReviewsController < ApplicationController
 
 
   def create
+
     @review = current_user.reviews.build(review_params)
     if @review.save
       flash[:success] = "Review created!"
-      redirect_to products_url
+      # redirect_to :back
+      redirect_to product_url(@review.product_id)
     else
       @feed_items = []
       # redirect_to products_url
