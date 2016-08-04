@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :users
-  resources :reviews          
+  resources :reviews
 
   root   'static_pages#home'
   get    '/help',    to: 'static_pages#help'
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+   get    '/product',  to: 'products#show'
 
   # get     '/product', to: 'products#index'
   # get     '/register',  to: 'products#new'
