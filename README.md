@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* About:
 
-Things you may want to cover:
+This is an web application assignment using rails framework.
+Application is meant for a review platform for online users on commercial products.
 
-* Ruby version
+Users have to sign up and log in to view/add reviews on the products listed by the site administrator.
 
-* System dependencies
+* References:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Redmart website: https://redmart.com/
+2. Ruby on Rails Tutorials by Michael HartL: https://www.railstutorial.org/  

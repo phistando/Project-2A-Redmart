@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_or_admin_user,   only: :destroy
+  # before_action :admin_user,     only: :destroy
 
 
   def new
@@ -27,6 +28,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find(params[:id])
     @review.destroy
    flash[:success] = "Review deleted"
    redirect_to request.referrer || root_url
@@ -38,13 +40,19 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:content, :user_id, :product_id)
     end
 
+    def correct_or_admin_user
+        redirect_to root_url unless (correct_user || admin_user)
+    end
+
     def correct_user
-      @review = current_user.reviews.find_by(id: params[:id])
-      redirect_to root_url if @review.nil?
+      return current_user.reviews.exists?(id: params[:id])
+      # return @review.present?
+      # redirect_to root_url if @review.nil?
     end
 
     # Confirms an admin user.
         def admin_user
-          redirect_to(root_url) unless current_user.admin?
+          return current_user.admin?
+          # redirect_to(root_url) unless current_user.admin?
         end
 end
